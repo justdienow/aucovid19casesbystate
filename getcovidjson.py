@@ -12,10 +12,9 @@ import json
 
     Returns:
         A list of key:value pairs in the form of a json array.
-
 """
 def tableDataToList(table):       
-    i = 0
+    i, total = 0, 0
     rows = []
     trs = tableBody.find_all('tr')
     for tr in trs[1:-1]:
@@ -25,8 +24,11 @@ def tableDataToList(table):
                 kvpair['location'] = td.get_text(strip=True)
             else:
                 kvpair['cases'] = int(td.get_text(strip=True).replace(",", ""))
+                total += int(td.get_text(strip=True).replace(",", ""))
             i+=1
         rows.append(kvpair)
+    allcases = {'total': total}
+    rows.append(allcases)
     return rows
 
 page = requests.get('https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers')
