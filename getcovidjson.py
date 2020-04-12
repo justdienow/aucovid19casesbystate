@@ -38,8 +38,16 @@ tableBody = pageContent.find('tbody')                       # Strip thr table bo
 '''
 Testing statements including some json testing
 '''
-list_table = tableDataToList(tableBody)
+# list_table = tableDataToList(tableBody)
 # print(list_table[:2])
 # print(list_table)
-print(json.dumps(list_table, indent=3))
-#print(json.dumps(list_table[:1], indent=3))
+# print(json.dumps(list_table, indent=3))
+# print(json.dumps(list_table[:1], indent=3))
+
+'''
+Write to file within the same directory.
+NOTE: Create a symlink to /var/www/html/ so you can hit it with your IoT device 
+(like a ESP8266) within your network.
+'''
+with open('covidcases.json', 'w') as json_file:
+    json.dump(list_table, json_file)
