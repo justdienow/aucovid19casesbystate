@@ -34,11 +34,11 @@ def tableDataToList(table):
 page = requests.get('https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers')
 pageContent = BeautifulSoup(page.content, 'html.parser')    # Parse the page throuh
 tableBody = pageContent.find('tbody')                       # Strip thr table body out
+list_table = tableDataToList(tableBody)
 
 '''
 Testing statements including some json testing
 '''
-# list_table = tableDataToList(tableBody)
 # print(list_table[:2])
 # print(list_table)
 # print(json.dumps(list_table, indent=3))
