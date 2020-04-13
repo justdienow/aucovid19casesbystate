@@ -47,7 +47,8 @@ Testing statements including some json testing
 '''
 Write to file within the same directory.
 NOTE: Create a symlink to /var/www/html/ so you can hit it with your IoT device 
-(like a ESP8266) within your network.
+(like a ESP8266) within your network. You may have to fiddle with your permissions or
+create a contab under root to write directly to /var/www/html.
 '''
-with open('covidcases.json', 'w') as json_file:
+with open('/var/www/html/covidcases.json', 'w') as json_file:
     json.dump(list_table, json_file)
